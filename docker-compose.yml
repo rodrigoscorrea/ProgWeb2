@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  backend: 
+    container_name: loja_backend
+    build: #context é onde está o path q vai gerar a img
+      context: ./backend
+    ports: 
+      - ${BACKEND_PORT}:${BACKEND_PORT}  
+    volumes:
+      - ./backend:/app #sem isso o nodemon não funciona, conflitos de versões de arquivo entre os ambientes  
+    environment:
+      - NODE_ENV=${NODE_ENV}
+  
+  frontend:
+    container_name: loja_frontend
+    build:
+      context: ./frontend
+    ports: 
+    - ${FRONTEND_PORT}:${FRONTEND_PORT}
+    volumes:
+      - ./frontend:/app  
+    environment:
+      - NODE_ENV=${NODE_ENV}
+  db:
+    container_name: loja_db
+    image: mysql:8 #pq tu tá pegando do docker hub e não de um diretório que vc já tem
+    ports:
+      - ${MYSQL_PORT}:3306
+    volumes:
+      - mysql_db_loja:/var/lib/mysql
+      - mysql_db_loja_config:/etc/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+volumes: 
+  mysql_db_loja:
+  mysql_db_loja_config:
