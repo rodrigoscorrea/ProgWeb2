@@ -1,7 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import validateEnv from './utils/validateEnv'
-//import morgan from 'morgan'
+import router from './router/router'
 import logger from './middlewares/logger'
 
 
@@ -10,16 +10,16 @@ validateEnv();
 
 const PORT = process.env.PORT ?? 3344
 const app = express()
-const LOG = process.env.LOG_DIR 
-app.use(logger('simples', LOG))
+const LOG = process.env.LOG_DIR ?? "../logs/index.log"
 
-app.get("/",(req,res) => {
-    res.send("Hello World")
-})
+app.use(logger('simples', LOG))
+app.use(router)
 
 app.listen(PORT,() => {
     console.log(`Servidor rodando na porta ${PORT}`)
 })
+
+
 
 
 
