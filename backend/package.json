@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx nodemon --watch 'src' --exec 'ts-node src/index.ts' --ext ts,js,json",
+    "start": "npx nodemon --watch 'src' --exec ts-node src/index.ts --ext ts,js,json",
     "build": "tsc",
     "start:prod": "node build/index.js",
     "lint": "eslint --ext .ts src/",
