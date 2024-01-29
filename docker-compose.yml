@@ -10,7 +10,8 @@ services:
       - ./backend:/app #sem isso o nodemon não funciona, conflitos de versões de arquivo entre os ambientes  
     environment:
       - NODE_ENV=${NODE_ENV}
-  
+    depends_on:
+      - db
   frontend:
     container_name: loja_frontend
     build:

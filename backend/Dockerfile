@@ -10,4 +10,4 @@ COPY ./ ./
 
 EXPOSE 4455
 
-CMD ["sh","./start.sh"]
+CMD ["sh","start.sh"]

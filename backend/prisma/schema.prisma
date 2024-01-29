@@ -10,8 +10,6 @@ model Produto{
   nome String @unique @db.VarChar(100)
   preco Decimal @db.Decimal
   estoque Int @db.Int
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
   
   @@map("produtos")
 }
