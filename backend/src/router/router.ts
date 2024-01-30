@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Router } from 'express';
+import express from 'express';
 import {LoremIpsum} from "lorem-ipsum"
-const router = Router();
+import produtoRouter from '../resources/produto/produto.router'
+
+const router = express.Router();
+router.use('/produto',produtoRouter);
 
 const lorem = new LoremIpsum({
     sentencesPerParagraph: {
@@ -28,4 +31,6 @@ router.get('/lorem/:num', (req,res) => {
     const num = parseInt(req.params.num)
     res.send(lorem.generateParagraphs(num).replace(/\n/g,"<br><br>\n"))
 })
+
+
 export default router;

@@ -13,6 +13,7 @@ const app = express()
 const LOG = process.env.LOG_DIR ?? "../logs/index.log"
 
 app.use(logger('simples', LOG))
+app.use(express.json());
 app.use(router)
 
 app.listen(PORT,() => {

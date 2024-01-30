@@ -3,5 +3,5 @@ if [ "$NODE_ENV" = "production"]; then
     npm start
 else  
     echo "API inicializada em ambiente de desenvolvimento"
-    npm run dev
+    npm run start
 fi
