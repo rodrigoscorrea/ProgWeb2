@@ -4,6 +4,8 @@ CREATE TABLE `produtos` (
     `nome` VARCHAR(100) NOT NULL,
     `preco` DECIMAL NOT NULL,
     `estoque` INTEGER NOT NULL,
+    `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updated_at` DATETIME(3) NOT NULL,
 
     UNIQUE INDEX `produtos_nome_key`(`nome`),
     PRIMARY KEY (`id`)

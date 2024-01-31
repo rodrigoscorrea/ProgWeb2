@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import express from 'express';
 import {LoremIpsum} from "lorem-ipsum"
-import produtoRouter from '../resources/produto/produto.router'
+//import produtoRouter from '../resources/produto/produto.router'
 
 const router = express.Router();
-router.use('/produto',produtoRouter);
+//router.use('/produto',produtoRouter);
 
 const lorem = new LoremIpsum({
     sentencesPerParagraph: {
