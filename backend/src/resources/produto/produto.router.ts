@@ -1,6 +1,9 @@
 import { Router } from 'express';
 import produtoController from './produto.controller';
+//import produtoSchema from './produto.schema';
+//import validate from 'middlewares/validate';
 const router = Router();
+
 
 // Produto controller
 router.get('/', produtoController.index);

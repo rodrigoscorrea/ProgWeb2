@@ -13,3 +13,8 @@ export const jaExiste = async (nome:string): Promise<boolean> => {
 export async function createProduto(produto: CreateProdutoDto): Promise<Produto> {
     return await prisma.produto.create({ data: produto });
 }
+
+export async function readProduto(id:string):Promise<Produto | null>{
+    return await prisma.produto.findUnique({where: {id}})
+}
+
