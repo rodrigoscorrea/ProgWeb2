@@ -1,20 +1,13 @@
 import { Request, Response, NextFunction } from 'express';
 import { ObjectSchema } from "joi"
-/* const validate = (schema:ObjectSchema) => {
-    return (req:Request, res:Response, next:NextFunction) => {
-        const {error} = schema.validate(req.body, {
-            abortEarly:
-        });
-    }
-} */
+import { StatusCodes} from 'http-status-codes';
 
 const validate = (schema: ObjectSchema) => {
     return (req: Request, res: Response, next: NextFunction) => {
-    const { error } = schema.validate(req.body, {
-    abortEarly: false
-    });
-    if (error) res.status(422).json({ error: error.details });
-        else next();
+        const { error } = schema.validate(req.body);  
+
+        if (error) res.status(StatusCodes.BAD_REQUEST).json({ error: error.details });
+        next();
     };
 };
 

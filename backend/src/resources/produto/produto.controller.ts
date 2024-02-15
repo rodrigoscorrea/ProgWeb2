@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Request, Response } from 'express';
-import { createProduto, jaExiste, listProdutos, readProduto } from './produto.service';
-import {CreateProdutoDto} from './produto.types'
+import { createProduto, jaExiste, listProdutos, readProduto, updateProduto } from './produto.service';
+import {CreateProdutoDto, UpdateProdutoDto} from './produto.types'
 import {
 	ReasonPhrases,
 	StatusCodes,
@@ -48,6 +48,21 @@ const read = async (req:Request, res:Response) => {
 const update = async (req:Request, res:Response) => {
     //quando o user for atualizar, verificar se o nome não é de outro produto já cadastrado
     // nome pode ser igual ao nome q ele tá tentando mudar, mas não pra outro já existente
+    const {id} = req.params;
+    const enviado = req.body;
+    try{
+        const produto = await readProduto(id);
+        if(!produto){
+            return res.status(StatusCodes.NOT_FOUND).json(ReasonPhrases.NOT_FOUND)
+        }
+        if(await jaExiste(enviado.nome)){
+            return res.status(StatusCodes.CONFLICT).json(enviado);
+        }
+        const updated = await updateProduto(id,enviado);
+        res.status(StatusCodes.OK).json(produto)
+    } catch (err){
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
+    } 
 }
 const remove = async (req:Request, res:Response) => {}
 
