@@ -1,10 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Request, Response } from "express";
-import { StatusCodes } from "http-status-codes";
-import createUsuario from "./usuario.service"
+import { StatusCodes, ReasonPhrases } from "http-status-codes";
+import {createUsuario, jaExiste, listUsuarios} from "./usuario.service"
 
-const index = (req:Request, res:Response) => {
-
+const index = async (req:Request, res:Response) => {
+    try{
+        const usuarios = await listUsuarios();
+        res.status(StatusCodes.OK).json(usuarios)
+    } catch (error){
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error)
+    }
 }
 
 const create = async (req:Request, res:Response) => {

@@ -10,6 +10,16 @@ import router from './router'
 import logger from './middlewares/logger'
 import setCookieLang from './middlewares/setCookieLanguage'
 
+import swaggerUi from "swagger-ui-express";
+import swaggerFile from "../swagger-output.json";
+
+declare module 'express-session' {
+    interface SessionData{
+        uid: string,
+        tipoUsuarioId:string
+    }
+}
+
 dotenv.config();
 validateEnv();
 
@@ -27,6 +37,7 @@ app.use(session({
     resave: true, //user só é desconectado 2 hrs dps do ultimo acesso
     saveUninitialized: true //msm se user não esteja logado
 }));
+app.use("/api", swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use(router);
 
 app.listen(PORT,() => {

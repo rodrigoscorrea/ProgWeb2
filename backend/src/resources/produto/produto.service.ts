@@ -22,3 +22,7 @@ export async function updateProduto(id:string,produto:UpdateProdutoDto): Promise
     return await prisma.produto.update({ where:{id}, data : produto});
 }
 
+export async function deleteProduto(id:string): Promise<Produto>{
+    return await prisma.produto.delete({where: {id}});
+}
+
