@@ -12,6 +12,7 @@ import setCookieLang from './middlewares/setCookieLanguage'
 
 import swaggerUi from "swagger-ui-express";
 import swaggerFile from "../swagger-output.json";
+import cors from 'cors';
 
 declare module 'express-session' {
     interface SessionData{
@@ -27,6 +28,7 @@ const PORT = process.env.PORT ?? 3344;
 const app = express();
 const LOG = process.env.LOG_DIR ?? "../logs/index.log";
 
+app.use(cors());
 app.use(logger('simples', LOG));
 app.use(express.json());
 app.use(cookieParser());

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -11,22 +12,26 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import ButtonGroup from '@mui/material/ButtonGroup';
 
 import {useState, useEffect} from 'react';
+import api from '@/utils/api';
 
 interface ProdutoCardProps{
-    produto:Produto;
+    id:string;
 }
 
-export default function ProdutoCard({produto}: ProdutoCardProps) {
+export default function ProdutoCard({id}:string) {
 
     const [quantidade, setQuantidade] = useState(0);
-    const [precoTotal, setPrecoTotal] = useState(quantidade * produto.preco);
+    const [produto, setProduto] = useState<Produto>();
+    const precoTotal = produto ? quantidade * produto.preco : 0;
 
     useEffect(() => {
-        setPrecoTotal(quantidade * produto.preco);
-    }, [quantidade]);
+      api.get(`/produto/${id}`).then((data)=>{
+        setProduto(data.data);
+      })
+    }, [id]);
 
     const increaseQtd = () => {
-        if(quantidade < produto.estoque) {
+        if(produto && quantidade < produto.estoque) {
             setQuantidade(quantidade + 1);
         }
     }
@@ -36,7 +41,10 @@ export default function ProdutoCard({produto}: ProdutoCardProps) {
             setQuantidade(quantidade - 1);
         }
     }
-  return (
+
+    if(!produto) return <>Carregando...</>;
+  
+    return (
     <Card sx={{ maxWidth: 345 }}>
       <CardContent>
         <div style={{display:'flex', justifyContent: 'space-between'}}>

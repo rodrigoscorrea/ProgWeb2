@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import Link from 'next/link';
 
 export default function ButtonAppBar() {
   return (
@@ -25,6 +26,7 @@ export default function ButtonAppBar() {
             Minha Loja
           </Typography>
           <Button color="inherit">Login</Button>
+          <Button component={Link} href="/produto" color="inherit">Produtos</Button>
         </Toolbar>
       </AppBar>
     </Box>
