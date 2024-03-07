@@ -10,9 +10,15 @@ import {Produto} from "@/types/produto";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import ButtonGroup from '@mui/material/ButtonGroup';
+import EditIcon from '@mui/icons-material/Edit';
+import Link from 'next/link';
+import { IconButton } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import {useState, useEffect} from 'react';
 import api from '@/utils/api';
+import { useRouter } from 'next/router';
+
 
 interface ProdutoCardProps{
     id:string;
@@ -23,6 +29,11 @@ export default function ProdutoCard({id}:string) {
     const [quantidade, setQuantidade] = useState(0);
     const [produto, setProduto] = useState<Produto>();
     const precoTotal = produto ? quantidade * produto.preco : 0;
+    const router = useRouter();
+    const handleDelete = (e:any) =>{
+      e.preventDefault();
+      api.delete(`/produto/${id}`).then(() => {router.push('./produto')}).catch((err) => console.log(err))
+    }
 
     useEffect(() => {
       api.get(`/produto/${id}`).then((data)=>{
@@ -66,6 +77,14 @@ export default function ProdutoCard({id}:string) {
           Valor total: {precoTotal} <br/>
         </Typography>
       </CardContent>
+      <CardActions>
+        <IconButton component={Link} href={`/produto/update/${id}`}>
+          <EditIcon/>
+        </IconButton>
+        <IconButton component={Link}>
+          <DeleteIcon />
+        </IconButton>
+      </CardActions>
       
     </Card>
   );
