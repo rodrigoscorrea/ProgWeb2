@@ -28,7 +28,7 @@ const PORT = process.env.PORT ?? 3344;
 const app = express();
 const LOG = process.env.LOG_DIR ?? "../logs/index.log";
 
-app.use(cors());
+app.use(cors({credentials:true, origin: "http://localhost:4466"}));
 app.use(logger('simples', LOG));
 app.use(express.json());
 app.use(cookieParser());

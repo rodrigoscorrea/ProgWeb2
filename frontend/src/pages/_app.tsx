@@ -1,5 +1,6 @@
 import type { AppProps } from "next/app";
 import  AppBar  from "@/components/AppBar/AppBar"
+import AuthProvider from "@/provider/AuthProvider";
 
 import "@/styles/globals.css";
 import '@fontsource/roboto/300.css';
@@ -11,10 +12,13 @@ import '@fontsource/roboto/700.css';
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-    <AppBar/>
-    <div style={{margin: 20}}>
-    <Component {...pageProps} />
-    </div>
+    <AuthProvider>
+      <AppBar/>
+      <div style={{margin: 20}}>
+        <Component {...pageProps} />
+      </div>
+    </AuthProvider>
+
     </>
   )
 }
