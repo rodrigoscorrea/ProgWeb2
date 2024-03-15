@@ -19,6 +19,7 @@ export default function Login(){
             setAuth({nome:data.data.nome, tipoUsuario: data.data.tipoUsuario})
             router.push("/produto");
         }).catch((err) => { 
+            console.log(credentials);
             if(err.response.status) setError("Email e/ou senha inválidos"); 
             console.log(err)
         });

@@ -24,7 +24,7 @@ interface ProdutoCardProps{
     id:string;
 }
 
-export default function ProdutoCard({id}:string) {
+export default function ProdutoCard({id}:ProdutoCardProps) {
 
     const [quantidade, setQuantidade] = useState(0);
     const [produto, setProduto] = useState<Produto>();
@@ -81,7 +81,7 @@ export default function ProdutoCard({id}:string) {
         <IconButton component={Link} href={`/produto/update/${id}`}>
           <EditIcon/>
         </IconButton>
-        <IconButton component={Link}>
+        <IconButton onClick={handleDelete}>
           <DeleteIcon />
         </IconButton>
       </CardActions>

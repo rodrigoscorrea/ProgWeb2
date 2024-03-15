@@ -18,7 +18,7 @@ const signup = async (req:Request, res:Response) => {
 const login = async (req:Request, res:Response) => {
     const credentials:LoginDto = req.body;
     try{
-        const usuario = await checkCredentials(credentials.email, credentials.senha, credentials);
+        const usuario = await checkCredentials(credentials);
         if(!usuario) return res.status(StatusCodes.UNAUTHORIZED).json(ReasonPhrases.UNAUTHORIZED);
         //Ao fazer o login, o sistema cria essas duas variáveis (expandidas no index)
         req.session.uid = usuario.id;
