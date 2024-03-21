@@ -6,11 +6,12 @@ import { useRouter } from "next/router";
 import {AuthContext}  from "@/provider/AuthProvider";
 
 export default function Login(){
+    const {auth, setAuth} = useContext(AuthContext);
     const [email, setEmail] = useState<string>("");
     const [senha, setSenha] = useState<string>("");
     const [error, setError] = useState<string>("");
     const router = useRouter();
-    const {auth, setAuth} = useContext(AuthContext);
+    
 
     const onSubmit = (e: FormEvent) => {
         e.preventDefault();

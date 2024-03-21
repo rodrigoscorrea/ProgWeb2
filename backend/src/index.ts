@@ -17,7 +17,8 @@ import cors from 'cors';
 declare module 'express-session' {
     interface SessionData{
         uid: string,
-        tipoUsuarioId:string
+        tipoUsuarioId:string,
+        carrinhoShop: string[]
     }
 }
 

@@ -40,13 +40,36 @@ function SignUp(){
                 </TextField>
             </Box >
             <Box sx={{mb:2}}>
-                <TextField label="senha" value={senha} type = "password" required onChange={(e) => {setSenha(e.target.value)}}>
-                
+                <TextField label="senha" value={senha} type = {viewSenha ? "text":"password"} required onChange={(e) => {setSenha(e.target.value)}} InputProps={
+                    {
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <IconButton onClick={() => {
+                                    setViewSenha(!viewSenha);
+                                }}>
+                                    {viewSenha ? <VisibilityOffIcon /> : <VisibilityIcon/>}
+                                </IconButton>
+                            </InputAdornment>
+                        )
+                    }
+                }>
                 </TextField>
             </Box>
 
             <Box sx={{mb:2}}>
-                <TextField label="confirmSenha" value={confirmSenha} type = "password" required onChange={(e) => {setConfirmSenha(e.target.value)}}>
+                <TextField label="confirmSenha" value={confirmSenha} type = {viewConfirmSenha ? "text" : "password"} required onChange={(e) => {setConfirmSenha(e.target.value)}} InputProps={
+                    {
+                    endAdornment: (
+                        <InputAdornment position="end">
+                            <IconButton onClick={() => {
+                                setViewConfirmSenha(!viewConfirmSenha);
+                            }}>
+                                {viewConfirmSenha ? <VisibilityOffIcon /> : <VisibilityIcon/>}
+                            </IconButton>
+                        </InputAdornment>
+                    )
+                    }
+                }>
                 </TextField>
             </Box>
 

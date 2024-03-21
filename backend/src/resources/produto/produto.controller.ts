@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Request, Response } from 'express';
 import { createProduto, deleteProduto, jaExiste, listProdutos, readProduto, updateProduto } from './produto.service';
-
 import {
 	ReasonPhrases,
 	StatusCodes,
@@ -57,13 +56,13 @@ const update = async (req:Request, res:Response) => {
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
     } 
 }
+
 const remove = async (req:Request, res:Response) => {
     const {id} = req.params;
     const alvo = req.body;
     try{
         const deletado = await deleteProduto(id);
         res.status(StatusCodes.OK).json(deletado);
-
     } catch(err){
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
     }

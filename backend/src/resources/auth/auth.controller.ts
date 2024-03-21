@@ -23,7 +23,6 @@ const login = async (req:Request, res:Response) => {
         //Ao fazer o login, o sistema cria essas duas variáveis (expandidas no index)
         req.session.uid = usuario.id;
         req.session.tipoUsuarioId = usuario.tipoUsuarioId;
-
         res.status(StatusCodes.OK).json({nome:usuario.nome, tipoUsuario: usuario.tipoUsuarioId === TiposUsuarios.CLIENT ? 'client' : 'admin'});
     } catch(err) {
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);

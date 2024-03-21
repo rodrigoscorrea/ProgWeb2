@@ -7,10 +7,7 @@ function ProdutoCreate(){
     const router = useRouter();
     const handleSubmit = (produto: CreateProdutoDto) => {
         api.post("/produto", produto).then(() => {router.push("/produto")}).catch(err => console.log(err));
-        
     };
-    
-
     return(
         <div>
             <h2>Criação de Produto</h2>

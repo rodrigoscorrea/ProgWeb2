@@ -30,9 +30,10 @@ export default function ProdutoCard({id}:ProdutoCardProps) {
     const [produto, setProduto] = useState<Produto>();
     const precoTotal = produto ? quantidade * produto.preco : 0;
     const router = useRouter();
+
     const handleDelete = (e:any) =>{
       e.preventDefault();
-      api.delete(`/produto/${id}`).then(() => {router.push('./produto')}).catch((err) => console.log(err))
+      api.delete(`/produto/${id}`).then(() => {router.push('/produto')}).catch((err) => console.log(err))
     }
 
     useEffect(() => {

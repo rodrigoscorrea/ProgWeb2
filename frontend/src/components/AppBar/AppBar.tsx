@@ -48,7 +48,7 @@ export default function ButtonAppBar() {
           )}
           {auth && (
             <>
-              <Button color="inherit" component={Link} href="/auth/login">Logout</Button>
+              <Button color="inherit" component={Link} href="/auth/login" onClick={onLogout}>Logout [{auth.nome}]</Button>
             </>
           )}
           <Button component={Link} href="/produto" color="inherit">Produtos</Button>
