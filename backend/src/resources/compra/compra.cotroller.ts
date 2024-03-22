@@ -1,14 +1,15 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Request, Response } from "express"
 import { ReasonPhrases, StatusCodes } from "http-status-codes";
 import { comprar } from "./compra.service";
 
 const adicionarItemCarrinho = (req:Request, res: Response) => {
-    const {id} = req.params;
-    if(!req.session.carrinhoShop){
+    const {id} = req.params
+    const quantidade = req.body;
+
+    if(!req.session.carrinhoShop){ //se carrinho estiver vazio basta não alterar o vetor
         req.session.carrinhoShop = [];
     }
-    req.session.carrinhoShop.push(id);
+    req.session.carrinhoShop.push({id: id, quantidade: quantidade});
     res.status(StatusCodes.OK).json(ReasonPhrases.OK);
 }
 

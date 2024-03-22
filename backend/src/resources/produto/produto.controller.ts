@@ -23,7 +23,7 @@ async function create(req: Request, res: Response) {
         res.status(StatusCodes.CREATED).json(newProduto);
     } catch (err) {
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(err);
-    }   
+    }
 }
 
 const read = async (req:Request, res:Response) => {

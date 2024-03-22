@@ -14,11 +14,16 @@ import swaggerUi from "swagger-ui-express";
 import swaggerFile from "../swagger-output.json";
 import cors from 'cors';
 
+export interface produtoCarrinho {
+    id: string;
+    quantidade: number
+}
+
 declare module 'express-session' {
     interface SessionData{
         uid: string,
         tipoUsuarioId:string,
-        carrinhoShop: string[]
+        carrinhoShop: produtoCarrinho[]
     }
 }
 
