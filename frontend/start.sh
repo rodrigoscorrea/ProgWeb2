@@ -1,8 +1,7 @@
-if [ "$NODE_ENV" = "production"]; then 
-    echo "Frontend inicializada em ambiente de produção"
-    npm run build
+if [ "$NODE_ENV" = "production" ]; then 
+    echo "API inicializada em ambiente de produção"
     npm start
 else  
-    echo "Frontend inicializada em ambiente de desenvolvimento"
-    npm run dev
+    echo "API inicializada em ambiente de desenvolvimento"
+    npm run start
 fi

@@ -1,4 +1,4 @@
-if [ "$NODE_ENV" = "production"]; then 
+if [ "$NODE_ENV" = "production" ]; then 
     echo "API inicializada em ambiente de produção"
     npm start
 else  
