@@ -18,7 +18,7 @@ Esse repositório é destinado ao trabalho desenvolvido ao longo da disciplina d
  1. CRUD de Produtos no Backend e no Frontend
  2. CRUD de Usuários no Backend e no Frontend, com variações para admin e cliente
  3. Carrinho de Compras, que registra o id do produto e a quantidade comprada, funcionando apenas no Backend da aplicação
- 4. Segue o link do vídeo no youtube demonstrando a funcionalidade do carrinho: 
+ 4. Segue o link do vídeo no youtube demonstrando a funcionalidade do carrinho: https://youtu.be/Qe2QE9_ojhw
 ## Limitações conhecidas
  1. Carrinho de compras não foi implementado no Frontend da aplicação
  2. A verificação do middleware "isAdmin" não funciona corretamente no Frontend, ou seja, mesmo que se faça login com um usuário Admin, este não tem poder de criar, editar ou deletar produtos. Entretanto, o middleware funciona corretamente no backend
