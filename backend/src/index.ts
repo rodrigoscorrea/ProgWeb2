@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import express from 'express'
-import dotenv from 'dotenv'
+import express from 'express';
+import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser'
 import session from 'express-session';
 import { v4 as uuidv4 } from 'uuid';

@@ -81,12 +81,4 @@ function SignUp(){
         </form>
     </>)
 }
-
-/* InputProps={
-                    <InputAdornment position="end"><IconButton onClick={() => {
-                        setViewSenha(!viewSenha);
-                    }}>
-                        <VisibilityIcon></VisibilityIcon>
-                        </IconButton>
-                    </InputAdornment>}> */
 export default SignUp;

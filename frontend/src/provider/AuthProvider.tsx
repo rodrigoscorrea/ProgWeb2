@@ -18,7 +18,7 @@ interface AuthProviderProps {
 } 
 function AuthProvider({children} : AuthProviderProps) {
     const [auth, setAuth] = useState<Auth | null> (null); //Quando acessar o site ele não tá automaticamente logado
-
+ 
     return (
         <AuthContext.Provider value={{auth, setAuth}}>
             {children}

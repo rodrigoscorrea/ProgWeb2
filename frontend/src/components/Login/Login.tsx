@@ -11,7 +11,6 @@ export default function Login(){
     const [senha, setSenha] = useState<string>("");
     const [error, setError] = useState<string>("");
     const router = useRouter();
-    
 
     const onSubmit = (e: FormEvent) => {
         e.preventDefault();
@@ -20,11 +19,11 @@ export default function Login(){
             setAuth({nome:data.data.nome, tipoUsuario: data.data.tipoUsuario})
             router.push("/produto");
         }).catch((err) => { 
-            console.log(credentials);
             if(err.response.status) setError("Email e/ou senha inválidos"); 
             console.log(err)
         });
     }
+
     return (<div>
         <h1>Login de Usuário</h1>
         <form onSubmit={onSubmit}>

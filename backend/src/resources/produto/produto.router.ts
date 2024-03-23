@@ -8,7 +8,7 @@ const router = Router();
 
 // Produto controller
 router.get('/', produtoController.index);
-router.post('/',isAdmin, validate(produtoSchema),produtoController.create); //chama produtoController somente se o validate usar o next()
+router.post('/',isAdmin, validate(produtoSchema),produtoController.create);
 router.get('/:id', produtoController.read);
 router.put('/:id',isAdmin, validate(produtoSchema),produtoController.update);
 router.delete('/:id', isAdmin, produtoController.remove);
